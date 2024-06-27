@@ -24,11 +24,15 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
-  var array = [];
-  Array.prototype.filtrar = function(obj){
-    if(obj.price >= 50){
-      return array.push(obj);
-    }
+  Array.prototype.filtrar = function(funcion){
+    var array = [];
+
+    this.map(function(element){
+      if(funcion(element)){
+        array.push(element);
+      }
+    })
+    return array;
   }
 };
 
